@@ -132,6 +132,16 @@ func _on_PlayerScene_game_over():
 	$LoseScreen.visible = true
 	$LoseScreen/LoseText.text = "GAME OVER" +"\n" + "Money: £" + str(stepify(money, 0.01)) + "\nStocks & Shares: £" + str(stepify(stocks_and_shares, 0.01)) + "\nCash to Bank: £" + str(stepify(cash, 0.01)) + "\nCrypto: £" + str(stepify(crypto, 0.01)) + "\n" + "\nYou earned: £"+ str(stepify(money + crypto + stocks_and_shares + cash, 0.01))
 	
+	var total_score = (stepify((money + cash + crypto + stocks_and_shares),0.01))
+	
+	if(total_score < 100):
+		$LoseScreen/LoseText.text += "\n\nGrandwealth can't \nretire with \nthis much money\n :("
+	elif(total_score < 300):
+		$LoseScreen/LoseText.text += "\nznGrandwealth can \nfinally retire!"
+	else:
+		$LoseScreen/LoseText.text += "\n\nGrandwealth is \ngoing on a \nretirement cruise"
+	
+	
 	$Restart.visible = true
 	$OpenInvestments.hide()
 	$Continue.hide()
@@ -197,7 +207,8 @@ func restartGame():
 	
 	game_over = false
 	
-	
+	wave = 0
+	nextWave()
 	
 	
 

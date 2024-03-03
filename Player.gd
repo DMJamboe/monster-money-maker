@@ -90,7 +90,10 @@ func _on_Main_player_attack():
 func _on_AnimatedSprite_animation_finished():
 	if ($AnimatedSprite.animation == "attack"):
 		$AnimatedSprite.animation = "run"
-		
+	if ($AnimatedSprite.animation == "attack2"):
+		$MagicBeam/BeamSprite.visible = true
+		$MagicBeam/BeamSprite.play()
+		$MagicBeam/BeamCollision.disabled = false
 	if ($AnimatedSprite.animation == "die"):
 		emit_signal("game_over")
 
@@ -100,12 +103,16 @@ func _on_BeamSprite_animation_finished():
 	$MagicBeam/BeamSprite.stop()
 	$MagicBeam/BeamSprite.frame = 0
 	$MagicBeam/BeamCollision.disabled = true
+	if (charging):
+		$AnimatedSprite.animation = "charge"
+	else:
+		$AnimatedSprite.animation = "run"
 
 
 func _on_Main_ranged_attack():
-	$MagicBeam/BeamSprite.visible = true
-	$MagicBeam/BeamSprite.play()
-	$MagicBeam/BeamCollision.disabled = false
+	
+	$AnimatedSprite.animation = "attack2"
+	$AnimatedSprite.frame = 0
 
 func _on_MagicBeam_body_entered(body):
 	body.hit(beam_damage) # Replace with function body.
