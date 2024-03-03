@@ -1,0 +1,479 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mushroom.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MobTimer.gd" type="Script" id=4]
+[ext_resource path="res://Dungeon Tile.png" type="Texture" id=5]
+[ext_resource path="res://city/1.png" type="Texture" id=6]
+[ext_resource path="res://city/3.png" type="Texture" id=7]
+[ext_resource path="res://city/4.png" type="Texture" id=8]
+[ext_resource path="res://city/2.png" type="Texture" id=9]
+[ext_resource path="res://city/5.png" type="Texture" id=10]
+[ext_resource path="res://CityBackground.gd" type="Script" id=11]
+[ext_resource path="res://Dungeon Tile interior.png" type="Texture" id=12]
+[ext_resource path="res://investment.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Buttons/purple_button.png" type="Texture" id=14]
+[ext_resource path="res://Buttons/green_button.png" type="Texture" id=15]
+[ext_resource path="res://Buttons/red_button.png" type="Texture" id=16]
+[ext_resource path="res://ChargedAttackButton.gd" type="Script" id=17]
+[ext_resource path="res://RangedAttackButton.gd" type="Script" id=18]
+[ext_resource path="res://Buttons/replay.png" type="Texture" id=19]
+[ext_resource path="res://city/Bank.png" type="Texture" id=20]
+[ext_resource path="res://Buttons/blue_button.png" type="Texture" id=21]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 47, 31 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 16 )
+region = Rect2( 47, 0, 47, 31 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 58.75, 27.25 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 49, 29 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 15 )
+region = Rect2( 49, 0, 49, 29 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 55, 29 )
+
+[sub_resource type="DynamicFontData" id=15]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=16]
+size = 18
+font_data = SubResource( 15 )
+
+[sub_resource type="Theme" id=17]
+default_font = SubResource( 16 )
+
+[sub_resource type="DynamicFontData" id=18]
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=19]
+size = 18
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=20]
+default_font = SubResource( 19 )
+
+[sub_resource type="DynamicFontData" id=12]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+font_data = SubResource( 12 )
+
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 42, 19 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 19 )
+region = Rect2( 42, 0, 42, 19 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 67.5, 34.5 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 47, 31 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 21 )
+region = Rect2( 47, 0, 47, 31 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 51.5, 25.5 )
+
+[sub_resource type="DynamicFontData" id=29]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=30]
+font_data = SubResource( 29 )
+
+[sub_resource type="Theme" id=31]
+default_font = SubResource( 30 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 47, 31 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 14 )
+region = Rect2( 47, 0, 47, 31 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 54, 25.5 )
+
+[sub_resource type="DynamicFontData" id=36]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=37]
+font_data = SubResource( 36 )
+
+[sub_resource type="Theme" id=38]
+default_font = SubResource( 37 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+mob_scene = ExtResource( 3 )
+
+[node name="MobSpawn" type="Position2D" parent="."]
+position = Vector2( 404, 580 )
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 1 )
+margin_right = 389.0
+margin_bottom = 844.0
+color = Color( 0.270588, 0.141176, 0.34902, 0.466667 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
+scroll_offset = Vector2( 0.5, 0 )
+script = ExtResource( 11 )
+speed = -1.0
+stun_speed = 1.5
+charge_speed = -2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 486, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 486, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 486, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 486, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 486, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="5" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 10 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 281.333, 242 )
+motion_mirroring = Vector2( 390, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DungeonTile" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( 100, 170 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 800, 16 )
+
+[node name="DungeonTileInterior" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( 117.333, 300 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 800, 250 )
+
+[node name="Timer" type="Timer" parent="ParallaxBackground"]
+one_shot = true
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+
+[node name="Bank" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2( 360, 250 )
+scale = Vector2( 2.20871, 2.20871 )
+texture = ExtResource( 20 )
+
+[node name="skyBox" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_left = -8.0
+margin_top = -6.0
+margin_right = 395.0
+margin_bottom = 122.0
+color = Color( 0.803922, 0.564706, 0.72549, 1 )
+
+[node name="BaseBackground" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = -5.0
+margin_top = 661.0
+margin_right = 397.0
+margin_bottom = 856.0
+mouse_filter = 2
+color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
+
+[node name="PlayerScene" parent="." instance=ExtResource( 2 )]
+position = Vector2( 40, 569 )
+
+[node name="ChargedAttack" type="Area2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="RedButton" type="AnimatedSprite" parent="ChargedAttack"]
+position = Vector2( 273, 750 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargedAttack"]
+position = Vector2( 267.25, 745.25 )
+shape = SubResource( 10 )
+
+[node name="Timer" type="Timer" parent="ChargedAttack"]
+one_shot = true
+
+[node name="RangedAttack" type="Area2D" parent="."]
+script = ExtResource( 18 )
+
+[node name="GreenButton" type="AnimatedSprite" parent="RangedAttack"]
+position = Vector2( 120, 752 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangedAttack"]
+position = Vector2( 125, 747 )
+shape = SubResource( 11 )
+
+[node name="Timer" type="Timer" parent="RangedAttack"]
+one_shot = true
+
+[node name="CoinCounter" type="Label" parent="."]
+margin_left = 290.0
+margin_top = 12.0
+margin_right = 383.0
+margin_bottom = 89.0
+theme = SubResource( 17 )
+text = "£0"
+
+[node name="WizardHealthCounter" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 13.0
+margin_right = 379.0
+margin_bottom = 52.0
+theme = SubResource( 20 )
+text = "0/50"
+
+[node name="LoseScreen" type="ColorRect" parent="."]
+visible = false
+margin_left = -34.0
+margin_top = -34.0
+margin_right = 407.0
+margin_bottom = 871.0
+mouse_filter = 2
+color = Color( 0.803922, 0.564706, 0.72549, 1 )
+
+[node name="LoseText" type="Label" parent="LoseScreen"]
+margin_left = 35.0
+margin_top = 33.0
+margin_right = 422.0
+margin_bottom = 334.0
+theme = SubResource( 14 )
+text = "GAME OVER"
+align = 1
+valign = 2
+
+[node name="Restart" type="Area2D" parent="."]
+visible = false
+position = Vector2( -34, -34 )
+
+[node name="Replay" type="AnimatedSprite" parent="Restart"]
+position = Vector2( 232, 390 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Restart"]
+position = Vector2( 219.5, 387.5 )
+shape = SubResource( 24 )
+
+[node name="OpenInvestments" type="Area2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="OpenInvestments"]
+position = Vector2( 106, 756 )
+scale = Vector2( 2.91935, 2.91935 )
+frames = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenInvestments"]
+position = Vector2( 101.5, 751.5 )
+shape = SubResource( 28 )
+
+[node name="Label" type="Label" parent="OpenInvestments"]
+margin_left = 52.0
+margin_top = 694.0
+margin_right = 155.0
+margin_bottom = 725.0
+theme = SubResource( 31 )
+text = "Invest"
+align = 1
+valign = 2
+
+[node name="Stocks and Shares2" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_left = 10.0
+margin_top = 43.0
+margin_right = 378.0
+margin_bottom = 193.0
+text_title = "Stocks and Shares"
+text_desc = "Low variance savings account"
+
+[node name="Cash" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_left = 10.0
+margin_top = 212.0
+margin_right = 378.0
+margin_bottom = 362.0
+text_title = "Cash"
+text_desc = "Constant low returns"
+
+[node name="Cryptocurrency" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_top = 377.0
+margin_bottom = 527.0
+text_title = "Cryptocurrencies"
+text_desc = "Highly volatile investment"
+
+[node name="Continue" type="Area2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Continue"]
+position = Vector2( 278, 758 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 34 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Continue"]
+position = Vector2( 275, 754.5 )
+shape = SubResource( 35 )
+
+[node name="Label" type="Label" parent="Continue"]
+margin_left = 226.0
+margin_top = 705.0
+margin_right = 322.0
+margin_bottom = 727.0
+theme = SubResource( 38 )
+text = "Continue"
+align = 1
+valign = 2
+
+[connection signal="charge" from="." to="ParallaxBackground" method="_on_Main_charge"]
+[connection signal="charge" from="." to="PlayerScene" method="_on_Main_charge"]
+[connection signal="hit_player" from="." to="PlayerScene" method="_on_player_hit"]
+[connection signal="player_attack" from="." to="PlayerScene" method="_on_Main_player_attack"]
+[connection signal="push_back" from="." to="ParallaxBackground" method="_on_Main_push_back"]
+[connection signal="ranged_attack" from="." to="PlayerScene" method="_on_Main_ranged_attack"]
+[connection signal="reset_all" from="." to="PlayerScene" method="_on_Main_reset_all"]
+[connection signal="total_death_wizard" from="." to="PlayerScene" method="_on_Main_total_death_wizard"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="ParallaxBackground/Timer" to="ParallaxBackground" method="_on_Timer_timeout"]
+[connection signal="game_over" from="PlayerScene" to="." method="_on_PlayerScene_game_over"]
+[connection signal="input_event" from="ChargedAttack" to="." method="_on_ChargedAttack_input_event"]
+[connection signal="input_event" from="ChargedAttack" to="ChargedAttack" method="_on_ChargedAttack_input_event"]
+[connection signal="timeout" from="ChargedAttack/Timer" to="ChargedAttack" method="_on_Timer_timeout"]
+[connection signal="input_event" from="RangedAttack" to="." method="_on_RangedAttack_input_event"]
+[connection signal="input_event" from="RangedAttack" to="RangedAttack" method="_on_RangedAttack_input_event"]
+[connection signal="timeout" from="RangedAttack/Timer" to="RangedAttack" method="_on_Timer_timeout"]
+[connection signal="input_event" from="Restart" to="." method="_on_Restart_input_event"]
+[connection signal="input_event" from="OpenInvestments" to="." method="_on_OpenInvestments_input_event"]
+[connection signal="add" from="Stocks and Shares2" to="." method="_on_Stocks_and_Shares2_add"]
+[connection signal="take" from="Stocks and Shares2" to="." method="_on_Stocks_and_Shares2_take"]
+[connection signal="add" from="Cash" to="." method="_on_Stocks_and_Shares_add"]
+[connection signal="take" from="Cash" to="." method="_on_Stocks_and_Shares_take"]
+[connection signal="add" from="Cryptocurrency" to="." method="_on_Cryptocurrency_add"]
+[connection signal="take" from="Cryptocurrency" to="." method="_on_Cryptocurrency_take"]
+[connection signal="input_event" from="Continue" to="." method="_on_Continue_input_event"]

@@ -1,0 +1,170 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://InvestmentGrid.gd" type="Script" id=1]
+[ext_resource path="res://Buttons/green_button.png" type="Texture" id=2]
+[ext_resource path="res://Buttons/red_button.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFontData" id=47]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=33]
+size = 20
+font_data = SubResource( 47 )
+
+[sub_resource type="Theme" id=48]
+default_font = SubResource( 33 )
+
+[sub_resource type="DynamicFontData" id=49]
+antialiased = false
+font_path = "res://Fonts/PixeloidSans-mLxMm.ttf"
+
+[sub_resource type="DynamicFont" id=39]
+size = 18
+outline_color = Color( 0.858824, 0.0588235, 0.0588235, 1 )
+use_mipmaps = true
+font_data = SubResource( 49 )
+
+[sub_resource type="Theme" id=50]
+default_font = SubResource( 39 )
+
+[sub_resource type="DynamicFontData" id=51]
+antialiased = false
+font_path = "res://Fonts/PixeloidMono-d94EV.ttf"
+
+[sub_resource type="DynamicFont" id=36]
+font_data = SubResource( 51 )
+
+[sub_resource type="Theme" id=52]
+default_font = SubResource( 36 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 47, 31 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 3 )
+region = Rect2( 47, 0, 47, 31 )
+
+[sub_resource type="SpriteFrames" id=53]
+animations = [ {
+"frames": [ SubResource( 41 ), SubResource( 42 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=54]
+extents = Vector2( 36, 18 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 49, 29 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 2 )
+region = Rect2( 49, 0, 49, 29 )
+
+[sub_resource type="SpriteFrames" id=55]
+animations = [ {
+"frames": [ SubResource( 45 ), SubResource( 46 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=56]
+extents = Vector2( 37, 18.5 )
+
+[node name="Stocks and Shares" type="ColorRect"]
+margin_left = 11.0
+margin_top = 48.0
+margin_right = 379.0
+margin_bottom = 198.0
+mouse_filter = 2
+theme = SubResource( 48 )
+color = Color( 0.32549, 0.298039, 0.52549, 1 )
+script = ExtResource( 1 )
+
+[node name="ValueBox" type="ColorRect" parent="."]
+margin_left = 235.0
+margin_top = 8.0
+margin_right = 359.0
+margin_bottom = 68.0
+mouse_filter = 2
+color = Color( 0.223711, 0.201874, 0.382812, 1 )
+
+[node name="ValueLabel" type="Label" parent="ValueBox"]
+margin_right = 124.0
+margin_bottom = 40.0
+text = "£0"
+align = 1
+valign = 1
+
+[node name="ValueChange" type="Label" parent="ValueBox"]
+margin_top = 34.0
+margin_right = 124.0
+margin_bottom = 59.0
+theme = SubResource( 50 )
+text = "+0%
+"
+align = 1
+valign = 1
+
+[node name="Title" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 19.0
+margin_right = 234.0
+margin_bottom = 58.0
+text = "Title"
+align = 1
+valign = 1
+
+[node name="Description" type="Label" parent="."]
+margin_left = 27.0
+margin_top = 124.0
+margin_right = 335.0
+margin_bottom = 149.0
+theme = SubResource( 52 )
+text = "Low variance savings account"
+
+[node name="Label3" type="Label" parent="Description"]
+margin_left = 4.0
+margin_top = -65.0
+margin_right = 95.0
+margin_bottom = -40.0
+text = "Add £10"
+
+[node name="Label" type="Label" parent="Description"]
+margin_left = 101.0
+margin_top = -65.0
+margin_right = 189.0
+margin_bottom = -45.0
+text = "Take £10"
+
+[node name="AddToSnS" type="Area2D" parent="."]
+position = Vector2( 1, 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AddToSnS"]
+position = Vector2( 72, 97 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 53 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AddToSnS"]
+position = Vector2( 69, 94 )
+shape = SubResource( 54 )
+
+[node name="TakeFromSnS" type="Area2D" parent="."]
+position = Vector2( 1, 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TakeFromSnS"]
+position = Vector2( 168, 97 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 55 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeFromSnS"]
+position = Vector2( 170, 94.5 )
+shape = SubResource( 56 )
+
+[connection signal="input_event" from="AddToSnS" to="." method="_on_AddToSnS_input_event"]
+[connection signal="input_event" from="TakeFromSnS" to="." method="_on_TakeFromSnS_input_event"]
